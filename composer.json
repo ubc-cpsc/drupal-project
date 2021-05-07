@@ -96,8 +96,7 @@
                 "type:drupal-profile"
             ],
             "public/themes/contrib/{$name}": [
-                "type:drupal-theme",
-                "ubc-web-services/galactus"
+                "type:drupal-theme"
             ],
             "drush/Commands/contrib/{$name}": [
                 "type:drupal-drush"

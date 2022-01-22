@@ -1,5 +1,5 @@
 {
-    "name": "drupal-composer/drupal-project",
+    "name": "ubccs/drupal-project",
     "description": "Project template for CS Drupal 9 projects with Composer",
     "type": "project",
     "license": "GPL-2.0-or-later",
@@ -10,26 +10,28 @@
         }
     ],
     "require": {
-        "composer/installers": "^1.0",
+        "composer/installers": "^2.0",
         "cweagans/composer-patches": "^1.0",
-        "drupal/backup_migrate": "^5.0@RC",
+        "drupal/backup_migrate": "^5.0",
         "drupal/composer_deploy": "^1.0",
-        "drupal/config_split": "^1.0",
-        "drupal/core-composer-scaffold": "^9.0",
-        "drupal/core-recommended": "^9.0",
+        "drupal/config_split": "^2.0@beta",
+        "drupal/core-composer-scaffold": "^9.0.0",
+        "drupal/core-recommended": "^9.0.0",
+        "drupal/core-vendor-hardening": "^9.0.0",
         "drupal/environment_indicator": "^4.0",
         "drupal/masquerade": "^2.0@beta",
         "drupal/module_filter": "^3.0",
         "drupal/pathauto": "^1.0",
-        "drush/drush": "^10.0",
-        "ubc-web-services/galactus": "dev-develop",
+        "drush/drush": "^11.0",
+        "ubc-web-services/galactus": "dev-master",
         "vlucas/phpdotenv": "^5.0"
     },
     "require-dev": {
         "deployer/deployer": "^6.0",
-        "drupal/core-dev": "^9.0",
+        "drupal/core-dev": "^9.0.0",
         "joachim-n/composer-manifest": "^1.0",
-        "roave/security-advisories": "dev-latest"
+        "roave/security-advisories": "dev-latest",
+        "ubc-cpsc/deployer-recipes": "^1.0"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -42,13 +44,22 @@
         "platform": {
             "php": "7.4.9"
         },
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "composer/installers": true,
+            "cweagans/composer-patches": true,
+            "drupal/core-composer-scaffold": true,
+            "drupal/core-vendor-hardening": true,
+            "joachim-n/composer-manifest": true
+        }
     },
     "autoload": {
         "classmap": [
             "scripts/composer/ScriptHandler.php"
         ],
-        "files": ["load.environment.php"]
+        "files": [
+            "load.environment.php"
+        ]
     },
     "scripts": {
         "pre-install-cmd": [
@@ -77,6 +88,7 @@
                 "[web-root]/.ht.router.php": false,
                 "[web-root]/INSTALL.txt": false,
                 "[web-root]/README.txt": false,
+                "[web-root]/README.md": false,
                 "[web-root]/example.gitignore": false,
                 "[web-root]/sites/development.services.yml": false,
                 "[web-root]/web.config": false
